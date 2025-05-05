@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Sơ đồ</h3>
+<img src="Sơ%20đồ.png" >
+<h3>Chức năng của từng thành phần:</h3>
+<b>1. Client:</b>
+<p>Gửi yêu cầu HTTP đến máy chủ và hiển thị giao diện người dùng dựa trên HTML/CSS/JS.</p>
+<b>2. Web Server:</b>
+<p>Tiếp nhận yêu cầu HTTP từ client</p>
+<p>Phân phối các tài nguyên tĩnh</p>
+<p>Chuyển tiếp yêu cầu động đến Application Server.</p>
+<b>3. Application Server: </b>
+<p>Xử lý logic nghiệp vụ.</p>
+<p>Triển khai các thành phần Java như Servlet, Controller, Service, DAO.</p>
+<p>Giao tiếp với Database để lấy hoặc cập nhật dữ liệu.</p>
+<b>4. Database</b>
+<P>Lưu trữ dữ liệu của ứng dụng như thông tin người dùng, sản phẩm, đơn hàng...</P>
+<p>Cung cấp dữ liệu thông qua các truy vấn SQL.</p>
+<h3>Cách các thành phần này tương tác với nhau.</h3>
+<p>Khi người dùng gửi yêu cầu từ trình duyệt, yêu cầu HTTP được gửi đến Web Server (như Apache Tomcat).
+    Nếu yêu cầu là động (ví dụ: cần xử lý dữ liệu), Web Server sẽ chuyển nó đến Application Server.
+    Tại đây, các thành phần như Servlet hoặc Controller xử lý logic nghiệp vụ, có thể truy cập cơ sở dữ liệu để lấy hoặc cập nhật thông tin.
+    Dữ liệu từ Database được gửi lại cho Application Server, sau đó trả kết quả về Web Server để phản hồi cho client dưới dạng HTML hoặc JSON. Toàn bộ quá trình này tạo nên
+    một ứng dụng web Java đầy đủ chức năng và có thể mở rộng.</p>
+</body>
+</html>
