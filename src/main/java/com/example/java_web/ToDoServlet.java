@@ -8,31 +8,28 @@ import javax.servlet.annotation.*;
 
 @WebServlet("/ToDoServlet")
 public class ToDoServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private ArrayList<String> tasks = new ArrayList<>();
-    private ArrayList<String> status = new ArrayList<>();
+    private ArrayList<Task> taskList = new ArrayList<>();
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String taskId = request.getParameter("taskId");
         if (taskId != null && !taskId.isEmpty()) {
             int index = Integer.parseInt(taskId);
-            if (index >= 0 && index < status.size()) {
-                status.set(index, "Completed");
+            if (index >= 0 && index < taskList.size()) {
+                taskList.get(index).setCompleted(true);
             }
         }
-        request.setAttribute("tasks", tasks);
-        request.setAttribute("status", status);
+        request.setAttribute("tasks", taskList);
         request.getRequestDispatcher("/session01/Bai8.jsp").forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         String newTask = request.getParameter("newJob");
         if (newTask != null && !newTask.isEmpty()) {
-            tasks.add(newTask);
-            status.add("Doing");
+            taskList.add(new Task(newTask));
         }
-        request.setAttribute("tasks", tasks);
-        request.setAttribute("status", status);
+        request.setAttribute("tasks", taskList);
         request.getRequestDispatcher("/session01/Bai8.jsp").forward(request, response);
     }
 }

@@ -105,20 +105,19 @@
             <th>Hành động</th>
         </tr>
         <%
-            ArrayList<String> tasks = (ArrayList<String>) request.getAttribute("tasks");
-            ArrayList<String> statuses = (ArrayList<String>) request.getAttribute("status");
+            ArrayList<Task> tasks = (ArrayList<Task>) request.getAttribute("tasks");
             if (tasks != null && !tasks.isEmpty()) {
                 for (int i = 0; i < tasks.size(); i++) {
-                    String status = statuses.get(i);
+                    Boolean status = tasks.get(i).isCompleted();
                     String statusClass = "status-doing";
-                    if ("Completed".equalsIgnoreCase(status)) {
+                    if (status) {
                         statusClass = "status-completed";
                     }
         %>
         <tr>
             <td><%= i + 1 %></td>
             <td><%= tasks.get(i) %></td>
-            <td class="<%= statusClass %>"><%= status %></td>
+            <td class="<%= statusClass %>"><%= status?"Completed":"Doing" %></td>
             <td><a class="action-link" href="ToDoServlet?taskId=<%= i %>">Chuyển trạng thái</a></td>
         </tr>
         <%
